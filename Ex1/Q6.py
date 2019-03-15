@@ -84,3 +84,4 @@ print('P(HD = Low|CW = Positive, FI = Promising)=', model.probability([[None, 'P
 print('P(HD = High|CW = Positive, FI = Promising)=', model.probability([[None, 'Promising', 'High', 'Positive']]))
 print('P(HD = Low|CW = Positive)=', model.probability([[None, None, 'Low', 'Positive']]))
 print('P(HD = High|CW = Positive)=', model.probability([[None, None, 'High', 'Positive']]))
+
