@@ -35,17 +35,13 @@ model.bake()
 
 # Section D
 print('-------- Section D ---------')
-p_promising_given_60 = model.probability([['+60', 'Promising', None, None]]) / model.probability([['+60', None, None, None]])  # By Conditional probability formula
-print('P(FI = P romosing|Age = +60)=', p_promising_given_60)
+print('P(FI = Promising|Age = +60)=', model.predict_proba({'Age': '+60'})[1].parameters[0]['Promising'])
 
 
 # Section E
 print('-------- Section E ---------')
-print('P(HD = Low|CW = Positive, FI = Promising)=', model.probability([[None, 'Promising', 'Low', 'Positive']]))
-print('P(HD = High|CW = Positive, FI = Promising)=', model.probability([[None, 'Promising', 'High', 'Positive']]))
-print('P(HD = Low|CW = Positive)=', model.probability([[None, None, 'Low', 'Positive']]))
-print('P(HD = High|CW = Positive)=', model.probability([[None, None, 'High', 'Positive']]))
-
+print('P(HD|CW = Positive, FI = Promising)=', model.predict_proba({'Future Income': 'Promising', 'Creditworthiness': 'Positive'})[2].parameters)
+print('P(HD|CW = Positive)=', model.predict_proba({'Creditworthiness': 'Positive'})[2].parameters)
 
 # Section F
 print('-------- Section F ---------')
@@ -80,8 +76,5 @@ model.add_edge(s2, s4)
 model.add_edge(s3, s4)
 model.bake()
 
-print('P(HD = Low|CW = Positive, FI = Promising)=', model.probability([[None, 'Promising', 'Low', 'Positive']]))
-print('P(HD = High|CW = Positive, FI = Promising)=', model.probability([[None, 'Promising', 'High', 'Positive']]))
-print('P(HD = Low|CW = Positive)=', model.probability([[None, None, 'Low', 'Positive']]))
-print('P(HD = High|CW = Positive)=', model.probability([[None, None, 'High', 'Positive']]))
-
+print('P(HD|CW = Positive, FI = Promising)=', model.predict_proba({'Future Income': 'Promising', 'Creditworthiness': 'Positive'})[2].parameters)
+print('P(HD|CW = Positive)=', model.predict_proba({'Creditworthiness': 'Positive'})[2].parameters)
