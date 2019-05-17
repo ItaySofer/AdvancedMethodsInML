@@ -41,7 +41,7 @@ def image_to_labels(annotations):
     for i in images:
         img_to_labels[i] = annotations[annotations[col_name] == i][
             'LabelName'].values.tolist()
-    return image_to_labels
+    return img_to_labels
 
 
 # Load train, test, validation image - url files into df.
